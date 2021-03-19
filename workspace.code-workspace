@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "Vue Project",
+			"path": "./client-app"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
