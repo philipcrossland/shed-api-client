@@ -26,16 +26,16 @@ body {
 #nav {
   padding: 1rem;
   background-color: #2980b9;
-  color: #d5e9f6;
+  color: rgba(#fff, 0.6);
 
   a {
     font-weight: bold;
-    color: #c0def1;
+    color: rgba(#fff, 0.75);
     text-decoration: none;
 
     &.router-link-exact-active,
     &:hover {
-      color: #eaf4fa;
+      color: rgba($color: #fff, $alpha: 0.95);
       text-decoration: underline;
     }
   }
@@ -46,7 +46,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     margin-right: 2rem;
-    color: #d5e9f6;
+    color: rgba(#fff, 0.6);
   }
 }
 
