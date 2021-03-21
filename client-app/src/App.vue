@@ -4,12 +4,26 @@
       <div>Shed API</div>
       <router-link to="/">Motion</router-link> |
       <router-link to="/about">About</router-link>
+      <Notifications />
     </div>
     <div class="content">
       <router-view />
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import Notifications from "@/components/Notifications.vue";
+
+@Component({
+  components: {
+    Notifications,
+  },
+})
+export default class App extends Vue {}
+</script>
+
 
 <style lang="scss">
 body {
@@ -27,11 +41,15 @@ body {
   padding: 1rem;
   background-color: #2980b9;
   color: rgba(#fff, 0.6);
+  display: flex;
 
   a {
     font-weight: bold;
     color: rgba(#fff, 0.75);
     text-decoration: none;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    transition: color 0.4s;
 
     &.router-link-exact-active,
     &:hover {
@@ -41,12 +59,15 @@ body {
   }
 
   > div {
-    display: inline;
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
     margin-right: 2rem;
     color: rgba(#fff, 0.6);
+  }
+
+  :last-child {
+    margin-left: auto;
   }
 }
 
