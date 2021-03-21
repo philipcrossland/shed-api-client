@@ -23,15 +23,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import axios from "axios";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 import { ApiResult } from "@/models/api-result";
 import { MotionSensed } from "@/models/motion-sensed";
-import About from "./About.vue";
 
 @Component({
   components: {
-    HelloWorld,
-    About,
   },
   data: () => ({
     page: 1,
