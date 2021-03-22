@@ -5,7 +5,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
+const baseUrl: string = process.env.VUE_APP_API_BASE_URL as string;
+
+axios.defaults.baseURL = baseUrl;
 
 Vue.config.productionTip = false
 

@@ -41,7 +41,7 @@ export default class Motion extends Vue {
   motions!: MotionSensed[];
 
   mounted(): void {
-    const url = `http://192.168.1.8:4321/motionsensor?page=${this.page}&pageSize=${this.pageSize}`;
+    const url = `/motionsensor?page=${this.page}&pageSize=${this.pageSize}`;
 
     axios.get<ApiResult<MotionSensed>>(url).then((x) => {
       this.motions = x.data.results;
