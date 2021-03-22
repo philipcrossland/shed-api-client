@@ -26,10 +26,15 @@ button {
   font-size: 1.5rem;
   background-color: transparent;
   border: none;
+  transition: color 0.4s;
   color: rgba(#fff, 0.4);
 }
 
 button:focus {
   outline: none;
+}
+
+button.has-unread-notifications {
+  color: rgba(#fff, 0.8);
 }
 </style>
