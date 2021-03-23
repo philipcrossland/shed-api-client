@@ -38,9 +38,8 @@ body {
 }
 
 #nav {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #2980b9;
-  color: rgba(#fff, 0.6);
   display: flex;
 
   a {
@@ -58,11 +57,11 @@ body {
     }
   }
 
-  > div {
+  > div:first-child {
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    margin-right: 2rem;
+    margin-right: 0.5rem;
     color: rgba(#fff, 0.6);
   }
 
