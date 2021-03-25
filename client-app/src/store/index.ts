@@ -17,12 +17,20 @@ const store: StoreOptions<AppState> = {
     }
   },
   getters: {
-    results: state => state.motionResults.results,
+    motionResults: state => state.motionResults.results,
     currentPage: state => state.motionResults.page,
     totalPages: state => state.motionResults.totalPages
   },
   actions: {
+    getSensedMotion(state, { page, pageSize }) {
 
+      const url = `/motionsensor?page=${page}&pageSize=${pageSize}`;
+
+      axios.get<ApiResult<MotionSensed>>(url).then((x) => {
+        state.commit('SET_MOTIONRESULTS', x.data);
+      });
+
+    }
   }
 };
 

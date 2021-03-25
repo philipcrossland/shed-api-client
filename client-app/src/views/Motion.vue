@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="motion in motions" v-bind:key="motion.id">
+        <tr v-for="motion in $store.getters.motionResults" v-bind:key="motion.id">
           <td></td>
           <td>{{ motion.sensedUtcDateTime }}</td>
           <td>{{ motion.name }}</td>
@@ -22,13 +22,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import axios from "axios";
-import { ApiResult } from "@/models/api-result";
 import { MotionSensed } from "@/models/motion-sensed";
 
 @Component({
-  components: {
-  },
+  components: {},
   data: () => ({
     page: 1,
     pageSize: 20,
@@ -41,10 +38,9 @@ export default class Motion extends Vue {
   motions!: MotionSensed[];
 
   mounted(): void {
-    const url = `/motionsensor?page=${this.page}&pageSize=${this.pageSize}`;
-
-    axios.get<ApiResult<MotionSensed>>(url).then((x) => {
-      this.motions = x.data.results;
+    this.$store.dispatch("getSensedMotion", {
+      page: this.page,
+      pageSize: this.pageSize,
     });
   }
 }
