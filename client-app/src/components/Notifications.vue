@@ -10,8 +10,8 @@
     role="navigation">
     <div>Notifications</div>
       <ul>
-        <li v-for="(notification, index) in notifications" v-bind:key="index" title="Motion Sensed">
-          <font-awesome-icon :icon="['fas', 'user-ninja']" /><div>{{ notification.utcDateTime }}<small>{{ notification.name }}</small></div>
+        <li v-for="(notification, index) in notifications" v-bind:key="index" title="Motion Detected">
+          <font-awesome-icon :icon="['fas', 'user-ninja']" /><div>{{ formatTime(notification.utcDateTime) }}<small>{{ notification.name }}</small></div>
         </li>
       </ul>
     </nav>
@@ -24,6 +24,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { faBell as faSolidBell, faUserNinja } from "@fortawesome/free-solid-svg-icons";
+import { DateTime } from 'luxon';
 import * as signalR from "@microsoft/signalr";
 import {
   NotificationType,
@@ -72,6 +73,12 @@ export default class Notifications extends Vue {
     this.showNotifications = !this.showNotifications;
 
     if (this.showNotifications) this.hasUnreadNotifications = false;
+  }
+
+  formatTime(utcIsoDate: string) : string {
+
+    return DateTime.fromISO(utcIsoDate).toLocaleString(DateTime.TIME_24_WITH_SECONDS);
+
   }
 
 }
@@ -138,6 +145,10 @@ li div {
 nav.shown {
   opacity: 1;
   visibility: visible;
+}
+
+small {
+  padding-left: 0.25em;
 }
 
 @keyframes shake {
