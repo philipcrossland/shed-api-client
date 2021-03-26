@@ -12,7 +12,7 @@
       <tbody>
         <tr v-for="motion in $store.getters.motionResults" v-bind:key="motion.id">
           <td></td>
-          <td>{{ motion.sensedUtcDateTime }}</td>
+          <td>{{ formatDate(motion.sensedUtcDateTime) }}</td>
           <td>{{ motion.name }}</td>
         </tr>
       </tbody>
@@ -23,6 +23,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { MotionSensed } from "@/models/motion-sensed";
+import { DateTime } from 'luxon';
 
 @Component({
   components: {},
@@ -42,6 +43,12 @@ export default class Motion extends Vue {
       page: this.page,
       pageSize: this.pageSize,
     });
+  }
+
+  formatDate(utcIsoDate: string) : string {
+
+    return DateTime.fromISO(utcIsoDate).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+
   }
 }
 </script>
