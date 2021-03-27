@@ -18,7 +18,7 @@
       </tbody>
     </table>
     <footer>
-      <Paginator v-if="$store.getters.motionResults" :currentPage="page" @pageChanged="pageChanged" />
+      <Paginator :currentPage="page" @pageChanged="pageChanged" />
     </footer>
   </div>
 </template>
