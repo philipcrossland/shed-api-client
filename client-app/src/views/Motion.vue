@@ -10,8 +10,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="motion in $store.getters.motionResults" v-bind:key="motion.id">
-          <td></td>
+        <tr v-for="(motion, index) in $store.getters.motionResults" v-bind:key="motion.id">
+          <td>{{ (index + 1) + ((page - 1) * pageSize) }}</td>
           <td>{{ formatDate(motion.sensedUtcDateTime) }}</td>
           <td>{{ motion.name }}</td>
         </tr>
@@ -87,16 +87,8 @@ thead th {
   border-bottom: 2px solid #dee2e6;
 }
 
-tbody tr {
-  counter-increment: row-num;
-}
-
 tr :first-child {
   text-align: center;
-}
-
-tr td:first-child::before {
-  content: counter(row-num);
 }
 
 footer {
