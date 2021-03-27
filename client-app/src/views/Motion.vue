@@ -17,16 +17,22 @@
         </tr>
       </tbody>
     </table>
+    <footer>
+      <Paginator v-if="$store.getters.motionResults" :currentPage="page" @pageChanged="pageChanged" />
+    </footer>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { MotionSensed } from "@/models/motion-sensed";
+import Paginator from '@/components/Paginator.vue';
 import { DateTime } from 'luxon';
 
 @Component({
-  components: {},
+  components: {
+    Paginator
+  },
   data: () => ({
     page: 1,
     pageSize: 20,
@@ -39,15 +45,23 @@ export default class Motion extends Vue {
   motions!: MotionSensed[];
 
   mounted(): void {
-    this.$store.dispatch("getSensedMotion", {
-      page: this.page,
-      pageSize: this.pageSize,
-    });
+    this.pageChanged(1);
   }
 
   formatDate(utcIsoDate: string) : string {
 
     return DateTime.fromISO(utcIsoDate).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
+
+  }
+
+  pageChanged(newPage: number): void {
+
+    this.page = newPage;
+
+    this.$store.dispatch("getSensedMotion", {
+      page: newPage,
+      pageSize: this.pageSize,
+    });
 
   }
 }
@@ -83,5 +97,9 @@ tr :first-child {
 
 tr td:first-child::before {
   content: counter(row-num);
+}
+
+footer {
+  text-align: end;
 }
 </style>>
