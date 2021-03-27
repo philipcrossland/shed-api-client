@@ -43,10 +43,6 @@ export default class Paginator extends Vue {
   currentPage = 1;
   totalPages = 0;
 
-  mounted(): void {
-    console.log("Paginator mounted");
-  }
-
 }
 </script>
 
