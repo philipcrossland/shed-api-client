@@ -39,7 +39,7 @@ body {
 
 #nav {
   padding: 0.5rem;
-  background-color: #2980b9;
+  background-image: linear-gradient(to right,  #174869, #2980b9, #2573a7);
   display: flex;
 
   a {
